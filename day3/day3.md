@@ -1,0 +1,3 @@
+Two notes on the efficiency of the algorithms used:
+1. the fastest solutions (ccquiel, Prashanth) are the ones that only build "half" of the diamond (denoted by having a for loop with range only going up to n/2) and then "mirror" it
+2. it looks faster to build a list and turn it into a string using join() (as ccquiel, diana, jorge, prashanth and yang did) rather than appending the characters to the string in each loop iteration (as I, ahmed, vanessa and kurt did)

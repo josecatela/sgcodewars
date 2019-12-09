@@ -1,0 +1,4 @@
+So the times are really not that different, so I'm having a hard time saying something interesting...
+It's harder than I thought!
+Again, best performance solutions didn't create a list to use .sum() at the end, but Sjay and Jose also didn't, so it's not the best performance predictor.
+Something that Akash and I did in common was to avoid accessing the elements of the string while looping. We kept a separate variable to check if we needed to add or subtract the roman numeral's value. Ggebre also didn't call the elements of the string while looping, but with a very different logic. I guess that was the strongest performance predictor

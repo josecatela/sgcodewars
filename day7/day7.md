@@ -1,0 +1,1 @@
+Clear conclusion: writing a lambda function with a mathematical operation is MUCH faster than using the eval function with a string.
