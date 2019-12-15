@@ -1,0 +1,1 @@
+Quick analysis: the groupby function is certainly very helpful when aiming at compact code but it can be a problem when targeting efficiency. There are simpler algorithms that can lead to better perfomance.
