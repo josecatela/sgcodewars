@@ -1,0 +1,2 @@
+- Damn, enumerate is slow!
+- It's relevant to notice that the fastest solutions are the ones that used some kind of "map" to find the paths to delete, being it a dictionary, an array, an auxiliary function of sorts. Each day we see nicer, more efficient, cleaner solutions
