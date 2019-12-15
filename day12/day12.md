@@ -1,0 +1,3 @@
+- In the solutions thread, the question was about the reduce function. I knew it from JavaScript but had never used it in Python, so my solutions doesn't use it. There are faster solutions that use the reduce function, so it does not affect performance. I can't draw great conclusions from it since I can't find two similar solutions, one with reduce and the other without.
+- It's interesting to compare @Yang’s and @Vanessa G.’s solutions, both using reduce but with very different ways of looping through the string.
+- The other clear conclusion is the impact on performance that the cast to string has. @Oleksandra Chmel and @Kilian went for code without it and beat the rest in performance.
