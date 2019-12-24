@@ -1,0 +1,1 @@
+I had to reduce the number of runs due to the complexity of the functions. Everyone used lots of enumerates (we needed them for both to match bomb values with positions on the reinforcements arrays) and for loops, what significantly increased the execution time.
