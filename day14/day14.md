@@ -1,0 +1,2 @@
+As @Yang said, the trick was to use Python libraries (in this specific case, the functions ord and chr) to find the missing letter. Some students used functions to transform the letters in either lower or upper case and that was not needed. Such as lambdas, map or other more sophisticated list functions.
+Less was more, in this kata
