@@ -1,0 +1,1 @@
+From the solutions, it looks like the more efficient approaches were to use the modulus functions to "go back" to the array after passing the length and using pop instead of del to get the items out of the original array.
