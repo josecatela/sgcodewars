@@ -1,0 +1,1 @@
+Hats off to @Diana Henninger, who got to the solution that did not need array creation. Her superiority would be even greater with larger inputs. Congrats!
