@@ -1,0 +1,2 @@
+@Oleksandra Chmel: "Many used for loops several times, which is why the speed decreased. Charlie used join - as far as I remember, speed also decreases when using this function.
+In my code, instead of using 2 or more for loops, the sum function, list comprehension, and the usual mathematical actions were used to create new_chars"
