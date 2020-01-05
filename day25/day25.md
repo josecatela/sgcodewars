@@ -1,0 +1,1 @@
+More than the code itself, the efficiency of this kata depended on the data structure selected, in terms of the informations saved in the loops and how many times we had to go through them. Congrats to @ccquiel for the most efficient way of doing that.
