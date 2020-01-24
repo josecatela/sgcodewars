@@ -1,0 +1,1 @@
+Using list comprehensions decreases the performance by about 2 times. Any arithmetic and use if-else leads to similar runtime results
