@@ -138,6 +138,21 @@ TEST_CODE_charlie_ang = '''
 result = charlie_ang_day30()
 '''
 
+Tushar_Jain_setup = '''
+from __main__ import Tushar_Jain_day30
+'''
+
+def Tushar_Jain_day30():
+    while True:
+        if one_two() == 1:
+            return one_two()
+        elif one_two() == 1:
+            return 3
+
+TEST_CODE_Tushar_Jain = '''
+result = Tushar_Jain_day30()
+'''
+
 #print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=10000)) + " seconds")
 #print("Time for akash_agarwal test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_agarwal, setup=akash_agarwal_setup, number=10000)) + " seconds")
 #print("Time for Samrat_Mukherjee test code: " + str(timeit.timeit(stmt=TEST_CODE_Samrat_Mukherjee, setup=Samrat_Mukherjee_setup, number=10000)) + " seconds")
@@ -158,3 +173,4 @@ print("Time for Yang test code: " + str(timeit.timeit(stmt=TEST_CODE_Yang, setup
 print("Time for Oleksandra_Chmel test code: " + str(timeit.timeit(stmt=TEST_CODE_Oleksandra_Chmel, setup=Oleksandra_Chmel_setup, number=100000)) + " seconds")
 #print("Time for sjay test code: " + str(timeit.timeit(stmt=TEST_CODE_sjay, setup=sjay_setup, number=10000)) + " seconds")
 print("Time for charlie_ang test code: " + str(timeit.timeit(stmt=TEST_CODE_charlie_ang, setup=charlie_ang_setup, number=100000)) + " seconds")
+print("Time for Tushar_Jain test code: " + str(timeit.timeit(stmt=TEST_CODE_Tushar_Jain, setup=Tushar_Jain_setup, number=100000)) + " seconds")
