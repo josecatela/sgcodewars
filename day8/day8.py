@@ -1,18 +1,5 @@
 import timeit
 
-killian_setup = '''
-from __main__ import killian_day8
-'''
-
-def killian_day8(roman):
-    checkout = [0] * n
-    for customer in customers:
-        checkout[checkout.index(min(checkout))] += customer
-    return max(checkout)
-
-TEST_CODE_killian = '''
-result = killian_day8('MCMXIV')
-'''
 
 akash_karan_setup = '''
 from __main__ import akash_karan_day8
@@ -108,59 +95,6 @@ TEST_CODE_ggebre = '''
 result = ggebre_day8('MCMXIV')
 '''
 
-vijaya_lakshmi_setup = '''
-from __main__ import vijaya_lakshmi_day8
-'''
-
-def vijaya_lakshmi_day8(roman):
-    return min(available[key] // recipe[key] if key in available else 0 for key in recipe)
-
-TEST_CODE_vijaya_lakshmi = '''
-result = vijaya_lakshmi_day8('MCMXIV')
-'''
-
-Prashanth_Kadimisetty_setup = '''
-from __main__ import Prashanth_Kadimisetty_day8
-'''
-
-def Prashanth_Kadimisetty_day8(roman):
-    return min([available[x]//recipe[x] if x in available else 0 for x in recipe])
-
-TEST_CODE_Prashanth_Kadimisetty = '''
-result = Prashanth_Kadimisetty_day8('MCMXIV')
-'''
-
-David_Nugent_setup = '''
-from __main__ import David_Nugent_day8
-'''
-
-def David_Nugent_day8(roman):
-    return min(available.get(k, 0) // recipe[k] for k in recipe)
-
-TEST_CODE_David_Nugent = '''
-result = David_Nugent_day8('MCMXIV')
-'''
-
-Kurt_Hinderer_setup = '''
-from __main__ import Kurt_Hinderer_day8
-'''
-
-
-def Kurt_Hinderer_day8(roman):
-    ##get a list for the time of each time
-    checkout_tills = [0] * n
-    #go through the customer list and add it to the till w/ minimum time
-    #then add that time to that till
-    for customer in customers:
-        checkout_tills[checkout_tills.index(min(checkout_tills))] += customer
-    #return the till with the largest time.
-    return max(checkout_tills)
-
-
-TEST_CODE_Kurt_Hinderer = '''
-result = Kurt_Hinderer_day8('MCMXIV')
-'''
-
 Jose_Catela_setup = '''
 from __main__ import Jose_Catela_day8
 '''
@@ -187,43 +121,9 @@ TEST_CODE_Jose_Catela = '''
 result = Jose_Catela_day8('MCMXIV')
 '''
 
-Yang_setup = '''
-from __main__ import Yang_day8
-'''
-
-
-def Yang_day8(roman):
-    dict = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-    val = dict[roman[0]]
-    if len(roman) == 1: return val
-    for i, x in enumerate(roman[1:], 1):
-        val += dict[x]
-        if dict[roman[i - 1]] < dict[roman[i]]:
-            val -= dict[roman[i - 1]] * 2
-    return val
-
-TEST_CODE_Yang = '''
-result = Yang_day8('MCMXIV')
-'''
-
-Vanessa_G_setup = '''
-from __main__ import Vanessa_G_day8
-'''
-
-
-def Vanessa_G_day8(roman):
-    r = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-    return sum(-r[roman[i]] if i + 1 < len(roman) and r[roman[i + 1]] > r[roman[i]]
-               else r[roman[i]] for i in range(len(roman)))
-
-TEST_CODE_Vanessa_G = '''
-result = Vanessa_G_day8('MCMXIV')
-'''
-
 Memo_Hurtado_setup = '''
 from __main__ import Memo_Hurtado_day8
 '''
-
 
 def Memo_Hurtado_day8(roman):
     r = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
@@ -238,7 +138,6 @@ Oleksandra_Chmel_setup = '''
 from __main__ import Oleksandra_Chmel_day8
 '''
 
-
 def Oleksandra_Chmel_day8(roman):
     numerals = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
     r = [numerals[num] for num in roman]
@@ -249,7 +148,6 @@ def Oleksandra_Chmel_day8(roman):
             r[i] = 0
     return sum(r)
 
-
 TEST_CODE_Oleksandra_Chmel = '''
 result = Oleksandra_Chmel_day8('MCMXIV')
 '''
@@ -257,7 +155,6 @@ result = Oleksandra_Chmel_day8('MCMXIV')
 sjay_setup = '''
 from __main__ import sjay_day8
 '''
-
 
 def sjay_day8(roman):
     reference = {
@@ -283,23 +180,48 @@ def sjay_day8(roman):
             i = i + 1
     return total
 
-
 TEST_CODE_sjay = '''
-result = sjay_day8('MCMXIV')
+result= sjay_day8('MCMXIV')
 '''
 
+Vanessa_G_setup = '''
+from __main__ import Vanessa_G_day8
+'''
+
+def Vanessa_G_day8(roman):
+    r = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    return sum(-r[roman[i]] if i + 1 < len(roman) and r[roman[i + 1]] > r[roman[i]]
+               else r[roman[i]] for i in range(len(roman)))
+
+TEST_CODE_Vanessa_G = '''
+result = Vanessa_G_day8('MCMXIV')
+'''
+
+Yang_setup = '''
+from __main__ import Yang_day8
+'''
+
+def Yang_day8(roman):
+    dict = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    val = dict[roman[0]]
+    if len(roman) == 1: return val
+    for i, x in enumerate(roman[1:], 1):
+        val += dict[x]
+        if dict[roman[i - 1]] < dict[roman[i]]:
+            val -= dict[roman[i - 1]] * 2
+    return val
+
+TEST_CODE_Yang = '''
+result = Yang_day8('MCMXIV')
+''' 
+
 print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=100000)) + " seconds")
-#print("Time for killian test code: " + str(timeit.timeit(stmt=TEST_CODE_killian, setup=killian_setup, number=100000)) + " seconds")
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=100000)) + " seconds")
-#print("Time for vijaya_lakshmi test code: " + str(timeit.timeit(stmt=TEST_CODE_vijaya_lakshmi, setup=vijaya_lakshmi_setup, number=100000)) + " seconds")
 print("Time for diana_henninger test code: " + str(timeit.timeit(stmt=TEST_CODE_diana_henninger, setup=diana_henninger_setup, number=100000)) + " seconds")
 print("Time for ggebre test code: " + str(timeit.timeit(stmt=TEST_CODE_ggebre, setup=ggebre_setup, number=100000)) + " seconds")
-#print("Time for David_Nugent test code: " + str(timeit.timeit(stmt=TEST_CODE_David_Nugent, setup=David_Nugent_setup, number=100000)) + " seconds")
-#print("Time for Prashanth_Kadimisetty test code: " + str(timeit.timeit(stmt=TEST_CODE_Prashanth_Kadimisetty, setup=Prashanth_Kadimisetty_setup, number=100000)) + " seconds")
-#print("Time for Kurt_Hinderer test code: " + str(timeit.timeit(stmt=TEST_CODE_Kurt_Hinderer, setup=Kurt_Hinderer_setup, number=100000)) + " seconds")
 print("Time for Jose_Catela test code: " + str(timeit.timeit(stmt=TEST_CODE_Jose_Catela, setup=Jose_Catela_setup, number=100000)) + " seconds")
-print("Time for Yang test code: " + str(timeit.timeit(stmt=TEST_CODE_Yang, setup=Yang_setup, number=100000)) + " seconds")
-print("Time for Vanessa_G test code: " + str(timeit.timeit(stmt=TEST_CODE_Vanessa_G, setup=Vanessa_G_setup, number=100000)) + " seconds")
 print("Time for Memo_Hurtado test code: " + str(timeit.timeit(stmt=TEST_CODE_Memo_Hurtado, setup=Memo_Hurtado_setup, number=100000)) + " seconds")
 print("Time for Oleksandra_Chmel test code: " + str(timeit.timeit(stmt=TEST_CODE_Oleksandra_Chmel, setup=Oleksandra_Chmel_setup, number=100000)) + " seconds")
 print("Time for sjay test code: " + str(timeit.timeit(stmt=TEST_CODE_sjay, setup=sjay_setup, number=100000)) + " seconds")
+print("Time for Vanessa_G test code: " + str(timeit.timeit(stmt=TEST_CODE_Vanessa_G, setup=Vanessa_G_setup, number=100000)) + " seconds")
+print("Time for Yang test code: " + str(timeit.timeit(stmt=TEST_CODE_Yang, setup=Yang_setup, number=100000)) + " seconds")
