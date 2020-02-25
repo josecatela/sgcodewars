@@ -2,10 +2,10 @@ import timeit
 
 
 ccquiel_setup = '''
-from __main__ import ccquiel_day5
+from __main__ import ccquiel_day6
 '''
 
-def ccquiel_day5(customers, n):
+def ccquiel_day6(customers, n):
     # Special cases
     if not customers:
         return 0
@@ -18,14 +18,14 @@ def ccquiel_day5(customers, n):
     return max(tills)
 
 TEST_CODE_ccquiel = '''
-result = ccquiel_day5([2,3,10], 2)
+result = ccquiel_day6([2,3,10], 2)
 '''
 
 diana_henninger_setup = '''
-from __main__ import diana_henninger_day5
+from __main__ import diana_henninger_day6
 '''
 
-def diana_henninger_day5(customers, n):
+def diana_henninger_day6(customers, n):
     # if only one till, then it's just the sum
     if n == 1: return sum(customers)
     # if there are more tills than customers, it's the max checkout time
@@ -49,14 +49,14 @@ def diana_henninger_day5(customers, n):
     return time
 
 TEST_CODE_diana_henninger = '''
-result = diana_henninger_day5([2,3,10], 2)
+result = diana_henninger_day6([2,3,10], 2)
 '''
 
 ggebre_setup = '''
-from __main__ import ggebre_day5
+from __main__ import ggebre_day6
 '''
 
-def ggebre_day5(customers, n):
+def ggebre_day6(customers, n):
     total_time = 0
     tills = [0 for index in range(n)]
     if len(customers) <= n and len(customers) != 0:
@@ -75,14 +75,14 @@ def ggebre_day5(customers, n):
     return total_time
 
 TEST_CODE_ggebre = '''
-result = ggebre_day5([2,3,10], 2)
+result = ggebre_day6([2,3,10], 2)
 '''
 
 Jose_Catela_setup = '''
-from __main__ import Jose_Catela_day5
+from __main__ import Jose_Catela_day6
 '''
 
-def Jose_Catela_day5(customers, n):
+def Jose_Catela_day6(customers, n):
     time_elapsed = 0  # initialize time
     tills = []
     for till in range(0, n):  # initialize tills
@@ -98,28 +98,28 @@ def Jose_Catela_day5(customers, n):
     return time_elapsed + max(tills)  # when there are no more customers, we need to wait for the slower one
 
 TEST_CODE_Jose_Catela = '''
-result = Jose_Catela_day5([2,3,10], 2)
+result = Jose_Catela_day6([2,3,10], 2)
 '''
 
 killian_setup = '''
-from __main__ import killian_day5
+from __main__ import killian_day6
 '''
 
-def killian_day5(customers, n):
+def killian_day6(customers, n):
     checkout = [0] * n
     for customer in customers:
         checkout[checkout.index(min(checkout))] += customer
     return max(checkout)
 
 TEST_CODE_killian = '''
-result = killian_day5([2,3,10], 2)
+result = killian_day6([2,3,10], 2)
 '''
 
 Kurt_Hinderer_setup = '''
-from __main__ import Kurt_Hinderer_day5
+from __main__ import Kurt_Hinderer_day6
 '''
 
-def Kurt_Hinderer_day5(customers, n):
+def Kurt_Hinderer_day6(customers, n):
     ##get a list for the time of each time
     checkout_tills = [0] * n
     #go through the customer list and add it to the till w/ minimum time
@@ -130,14 +130,14 @@ def Kurt_Hinderer_day5(customers, n):
     return max(checkout_tills)
 
 TEST_CODE_Kurt_Hinderer = '''
-result = Kurt_Hinderer_day5([2,3,10], 2)
+result = Kurt_Hinderer_day6([2,3,10], 2)
 '''
 
 Oleksandra_Chmel_setup = '''
-from __main__ import Oleksandra_Chmel_day5
+from __main__ import Oleksandra_Chmel_day6
 '''
 
-def Oleksandra_Chmel_day5(customers, n):
+def Oleksandra_Chmel_day6(customers, n):
     people = len(customers)
     tills = [0] * n
     if people == 0:
@@ -153,14 +153,14 @@ def Oleksandra_Chmel_day5(customers, n):
         return max(tills)
 
 TEST_CODE_Oleksandra_Chmel = '''
-result = Oleksandra_Chmel_day5([2,3,10], 2)
+result = Oleksandra_Chmel_day6([2,3,10], 2)
 '''
 
 sjay_setup = '''
-from __main__ import sjay_day5
+from __main__ import sjay_day6
 '''
 
-def sjay_day5(customers, n):
+def sjay_day6(customers, n):
     if (len(customers) > 0):
         till = []
         valnow = customers[0]
@@ -191,34 +191,34 @@ def sjay_day5(customers, n):
         return 0
 
 TEST_CODE_sjay = '''
-result = sjay_day5([2,3,10], 2)
+result = sjay_day6([2,3,10], 2)
 '''
 
 Vanessa_G_setup = '''
-from __main__ import Vanessa_G_day5
+from __main__ import Vanessa_G_day6
 '''
 
-def Vanessa_G_day5(customers, n):
+def Vanessa_G_day6(customers, n):
     q = [0] * n
     for c in customers: q[q.index(min(q))] += c
     return max(q)
 
 TEST_CODE_Vanessa_G = '''
-result = Vanessa_G_day5([2,3,10], 2)
+result = Vanessa_G_day6([2,3,10], 2)
 '''
 
 Yang_setup = '''
-from __main__ import Yang_day5
+from __main__ import Yang_day6
 '''
 
-def Yang_day5(customers, n):
+def Yang_day6(customers, n):
     if len(customers) <= n: return max(customers, default=0)  # without this line it would still work
     qq = [0] * (n)
     for x in customers: qq[qq.index(min(qq))] += x
     return max(qq)
 
 TEST_CODE_Yang = '''
-result = Yang_day5([2,3,10], 2)
+result = Yang_day6([2,3,10], 2)
 '''
 
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=100000)) + " seconds")
