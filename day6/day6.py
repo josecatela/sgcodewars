@@ -78,6 +78,24 @@ TEST_CODE_ggebre = '''
 result = ggebre_day6([2,3,10], 2)
 '''
 
+Jens_setup = '''
+from __main__ import Jens_day6
+'''
+
+def Jens_day6(customers, n):
+    if customers == []:
+        return 0
+    elif len(customers) <= n:
+        return max(customers)
+    tills = {x : customers[x] for x in range(n)}
+    for i in range(n, len(customers)):
+        tills[min(tills.keys(), key = (lambda k: tills[k]))] += customers[i]
+    return max(tills.values())
+
+TEST_CODE_Jens = '''
+result = Jens_day6([2,3,10], 2)
+'''
+
 Jose_Catela_setup = '''
 from __main__ import Jose_Catela_day6
 '''
@@ -156,6 +174,33 @@ TEST_CODE_Oleksandra_Chmel = '''
 result = Oleksandra_Chmel_day6([2,3,10], 2)
 '''
 
+Samrat_Mukherjee_setup = '''
+from __main__ import Samrat_Mukherjee_day6
+'''
+
+def Samrat_Mukherjee_day6(customers, n):
+    # TODO
+    if n == 1:
+        return sum(customers)
+    if n >= len(customers):
+        return max(customers)
+    time = [0] * n
+    i = 0
+    for i in range(0 , n):
+        time[i] = customers[0]
+        customers.pop(0)
+        
+    while len(customers) > 0:
+        time.sort()
+        time[0] += customers[0]
+        customers.pop(0)
+        
+    return max(time)
+
+TEST_CODE_Samrat_Mukherjee = '''
+result = Samrat_Mukherjee_day6([2,3,10], 2)
+'''
+
 sjay_setup = '''
 from __main__ import sjay_day6
 '''
@@ -224,10 +269,12 @@ result = Yang_day6([2,3,10], 2)
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=100000)) + " seconds")
 print("Time for diana_henninger test code: " + str(timeit.timeit(stmt=TEST_CODE_diana_henninger, setup=diana_henninger_setup, number=100000)) + " seconds")
 print("Time for ggebre test code: " + str(timeit.timeit(stmt=TEST_CODE_ggebre, setup=ggebre_setup, number=100000)) + " seconds")
+print("Time for Jens test code: " + str(timeit.timeit(stmt=TEST_CODE_Jens, setup=Jens_setup, number=100000)) + " seconds")
 print("Time for Jose_Catela test code: " + str(timeit.timeit(stmt=TEST_CODE_Jose_Catela, setup=Jose_Catela_setup, number=100000)) + " seconds")
 print("Time for killian test code: " + str(timeit.timeit(stmt=TEST_CODE_killian, setup=killian_setup, number=100000)) + " seconds")
 print("Time for Kurt_Hinderer test code: " + str(timeit.timeit(stmt=TEST_CODE_Kurt_Hinderer, setup=Kurt_Hinderer_setup, number=100000)) + " seconds")
 print("Time for Oleksandra_Chmel test code: " + str(timeit.timeit(stmt=TEST_CODE_Oleksandra_Chmel, setup=Oleksandra_Chmel_setup, number=100000)) + " seconds")
+print("Time for Samrat_Mukherjee test code: " + str(timeit.timeit(stmt=TEST_CODE_Samrat_Mukherjee, setup=Samrat_Mukherjee_setup, number=100000)) + " seconds")
 print("Time for sjay test code: " + str(timeit.timeit(stmt=TEST_CODE_sjay, setup=sjay_setup, number=100000)) + " seconds")
 print("Time for Vanessa_G test code: " + str(timeit.timeit(stmt=TEST_CODE_Vanessa_G, setup=Vanessa_G_setup, number=100000)) + " seconds")
 print("Time for Yang test code: " + str(timeit.timeit(stmt=TEST_CODE_Yang, setup=Yang_setup, number=100000)) + " seconds")
