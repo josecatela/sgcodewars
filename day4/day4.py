@@ -152,7 +152,8 @@ def vijaya_lakshmi_day4(value):
 
 TEST_CODE_vijaya_lakshmi = '''
 example=11
-result = vijaya_lakshmi_day4(example)'''
+result = vijaya_lakshmi_day4(example)
+'''
 
 Yang_setup = '''
 from __main__ import Yang_day4
