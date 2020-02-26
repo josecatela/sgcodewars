@@ -2,24 +2,6 @@ import timeit
 from functools import reduce
 
 
-akash_karan_setup = '''
-from __main__ import akash_karan_day12
-'''
-
-def akash_karan_day12(n):
-    ct=0
-    while(n%10!=n):
-        m=1
-        for i in str(n):
-            m*=int(i)
-        n=m
-        ct+=1
-    return ct
-
-TEST_CODE_akash_karan = '''
-result = akash_karan_day12(39)
-'''
-
 Akash_Agarwal_setup = '''
 from __main__ import Akash_Agarwal_day12
 '''
@@ -46,6 +28,24 @@ def Akash_Agarwal_day12(n):
 
 TEST_CODE_Akash_Agarwal = '''
 result = Akash_Agarwal_day12(39)
+'''
+
+akash_karan_setup = '''
+from __main__ import akash_karan_day12
+'''
+
+def akash_karan_day12(n):
+    ct=0
+    while(n%10!=n):
+        m=1
+        for i in str(n):
+            m*=int(i)
+        n=m
+        ct+=1
+    return ct
+
+TEST_CODE_akash_karan = '''
+result = akash_karan_day12(39)
 '''
 
 ccquiel_setup = '''
@@ -340,8 +340,8 @@ TEST_CODE_Yang = '''
 result = Yang_day12(39)
 '''
 
-print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=100000)) + " seconds")
 print("Time for Akash_Agarwal test code: " + str(timeit.timeit(stmt=TEST_CODE_Akash_Agarwal, setup=Akash_Agarwal_setup, number=100000)) + " seconds")
+print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=100000)) + " seconds")
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=100000)) + " seconds")
 print("Time for Charlie_Ang test code: " + str(timeit.timeit(stmt=TEST_CODE_Charlie_Ang, setup=Charlie_Ang_setup, number=100000)) + " seconds")
 print("Time for diana_henninger test code: " + str(timeit.timeit(stmt=TEST_CODE_diana_henninger, setup=diana_henninger_setup, number=100000)) + " seconds")
