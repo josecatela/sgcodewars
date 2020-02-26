@@ -28,6 +28,22 @@ TEST_CODE_ccquiel = '''
 result = ccquiel_day14(['a','b','c','d','f'])
 '''
 
+Charlie_Ang_setup = '''
+from __main__ import Charlie_Ang_day14
+'''
+
+def Charlie_Ang_day14(chars):
+    english = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" if chars[0].isupper() else "abcdefghijklmnopqrstuvwxyz"
+    start_index = english.index(chars[0])
+    for i,c in enumerate(chars,start=english.index(chars[0])):
+        if c != english[i]:
+            return english[i]
+    return ""
+
+TEST_CODE_Charlie_Ang = '''
+result = Charlie_Ang_day14(['a','b','c','d','f'])
+'''
+
 diana_henninger_setup = '''
 from __main__ import diana_henninger_day14
 '''
@@ -45,6 +61,18 @@ def diana_henninger_day14(chars):
 
 TEST_CODE_diana_henninger = '''
 result = diana_henninger_day14(['a','b','c','d','f'])
+'''
+
+Ggebre_setup = '''
+from __main__ import Ggebre_day14
+'''
+
+def Ggebre_day14(chars):
+    compare_chars = set([chr(x) for x in range(ord(chars[0]), ord(chars[-1]) + 1)])
+    return (compare_chars - set(chars)).pop()
+
+TEST_CODE_Ggebre = '''
+result = Ggebre_day14(['a','b','c','d','f'])
 '''
 
 Jens_setup = '''
@@ -195,7 +223,9 @@ result = Yang_day14(['a','b','c','d','f'])
 
 print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=100000)) + " seconds")
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=100000)) + " seconds")
+print("Time for Charlie_Ang test code: " + str(timeit.timeit(stmt=TEST_CODE_Charlie_Ang, setup=Charlie_Ang_setup, number=100000)) + " seconds")
 print("Time for diana_henninger test code: " + str(timeit.timeit(stmt=TEST_CODE_diana_henninger, setup=diana_henninger_setup, number=100000)) + " seconds")
+print("Time for Ggebre test code: " + str(timeit.timeit(stmt=TEST_CODE_Ggebre, setup=Ggebre_setup, number=100000)) + " seconds")
 print("Time for Jens test code: " + str(timeit.timeit(stmt=TEST_CODE_Jens, setup=Jens_setup, number=100000)) + " seconds")
 print("Time for Jose_Catela test code: " + str(timeit.timeit(stmt=TEST_CODE_Jose_Catela, setup=Jose_Catela_setup, number=100000)) + " seconds")
 print("Time for Kurt_Hinderer test code: " + str(timeit.timeit(stmt=TEST_CODE_Kurt_Hinderer, setup=Kurt_Hinderer_setup, number=100000)) + " seconds")
