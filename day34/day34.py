@@ -2,10 +2,10 @@ import timeit
 
 
 ccquiel_setup = '''
-from __main__ import ccquiel_day32
+from __main__ import ccquiel_day34
 '''
 
-def ccquiel_day32(year):
+def ccquiel_day34(year):
     while True:
         year += 1
         ys = str(year)
@@ -13,14 +13,14 @@ def ccquiel_day32(year):
             return year
 
 TEST_CODE_ccquiel = '''
-result = ccquiel_day32(1987)
+result = ccquiel_day34(1987)
 '''
 
 charlie_ang_setup = '''
-from __main__ import charlie_ang_day32
+from __main__ import charlie_ang_day34
 '''
 
-def charlie_ang_day32(year):
+def charlie_ang_day34(year):
     check = set()
     while len(check) != 4:
         year += 1
@@ -29,28 +29,28 @@ def charlie_ang_day32(year):
     return year
 
 TEST_CODE_charlie_ang = '''
-result = charlie_ang_day32(1987)
+result = charlie_ang_day34(1987)
 '''
 
 diana_henninger_setup = '''
-from __main__ import diana_henninger_day32
+from __main__ import diana_henninger_day34
 '''
 
-def diana_henninger_day32(year):
+def diana_henninger_day34(year):
     happy_year = False
     while not happy_year:
         year += 1
         if len(set(str(year))) == 4: return year
 
 TEST_CODE_diana_henninger = '''
-result = diana_henninger_day32(1987)
+result = diana_henninger_day34(1987)
 '''
 
 Jens_setup = '''
-from __main__ import Jens_day32
+from __main__ import Jens_day34
 '''
 
-def Jens_day32(year):
+def Jens_day34(year):
     while True:
         year += 1
         if (str(year)[0] not in str(year)[1:] and 
@@ -59,14 +59,14 @@ def Jens_day32(year):
             return year
 
 TEST_CODE_Jens = '''
-result = Jens_day32(1987)
+result = Jens_day34(1987)
 '''
 
 Kurt_Hinderer_setup = '''
-from __main__ import Kurt_Hinderer_day32
+from __main__ import Kurt_Hinderer_day34
 '''
 
-def Kurt_Hinderer_day32(year):
+def Kurt_Hinderer_day34(year):
     unhappy = True
     while unhappy:
         year += 1
@@ -78,11 +78,11 @@ def Kurt_Hinderer_day32(year):
     return year
 
 TEST_CODE_Kurt_Hinderer = '''
-result = Kurt_Hinderer_day32(1987)
+result = Kurt_Hinderer_day34(1987)
 '''
 
 Navneet_Kumar_setup = '''
-from __main__ import Navneet_Kumar_day32
+from __main__ import Navneet_Kumar_day34
 '''
 
 def check_unique(year):
@@ -94,47 +94,47 @@ def check_unique(year):
         year = year//10
     return True
 
-def Navneet_Kumar_day32(year):
+def Navneet_Kumar_day34(year):
     year+=1
     while not check_unique(year) :
         year+=1
     return year 
 
 TEST_CODE_Navneet_Kumar = '''
-result = Navneet_Kumar_day32(1987)
+result = Navneet_Kumar_day34(1987)
 '''
 
 Oleksandra_Chmel_setup = '''
-from __main__ import Oleksandra_Chmel_day32
+from __main__ import Oleksandra_Chmel_day34
 '''
 
-def Oleksandra_Chmel_day32(year):
+def Oleksandra_Chmel_day34(year):
     for i in range(year+1,10000):
         if len(set(str(i))) == 4:
             return i
 
 TEST_CODE_Oleksandra_Chmel = '''
-result = Oleksandra_Chmel_day32(1987)
+result = Oleksandra_Chmel_day34(1987)
 '''
 
 Tushar_Jain_setup = '''
-from __main__ import Tushar_Jain_day32
+from __main__ import Tushar_Jain_day34
 '''
 
-def Tushar_Jain_day32(year):
+def Tushar_Jain_day34(year):
     for i in range(year + 1, 9013):
         if len(set(str(i))) == 4:
             return i
 
 TEST_CODE_Tushar_Jain = '''
-result = Tushar_Jain_day32(1987)
+result = Tushar_Jain_day34(1987)
 '''
 
 Viji_setup = '''
-from __main__ import Viji_day32
+from __main__ import Viji_day34
 '''
 
-def Viji_day32(year):
+def Viji_day34(year):
     #your code here
     return_year = ''
     while True:
@@ -154,21 +154,21 @@ def Viji_day32(year):
     return int(return_year)
 
 TEST_CODE_Viji = '''
-result = Viji_day32(1987)
+result = Viji_day34(1987)
 '''
 
 Yang_setup = '''
-from __main__ import Yang_day32
+from __main__ import Yang_day34
 '''
 
-def Yang_day32(year): 
+def Yang_day34(year): 
     year +=1 
     while len(set(str(year)))!=4: 
         year+=1 
     return year 
 
 TEST_CODE_Yang = '''
-result = Yang_day32(1987)
+result = Yang_day34(1987)
 '''
 
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=100000)) + " seconds")
