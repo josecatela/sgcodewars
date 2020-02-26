@@ -1,29 +1,10 @@
 import timeit
 from itertools import groupby
 
-MORSE_CODE ={'.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z', '-----': '0', '.----': '1', '..---': '2', '...--': '3', '....-': '4', '.....': '5', '-....': '6', '--...': '7', '---..': '8', '----.': '9', '.-.-.-': '.', '--..--': ',', '..--..': '?', '.----.': "'", '-.-.--': '!', '-..-.': '/', '-.--.': '(', '-.--.-': ')', '.-...': '&', '---...': ':', '-.-.-.': ';', '-...-': '=', '.-.-.': '+', '-....-': '-', '..--.-': '_', '.-..-.': '"', '...-..-': '$', '.--.-.': '@', '...---...': 'SOS'}
 
-killian_setup = '''
-from __main__ import killian_day10
-'''
+##########
+MORSE_CODE = {'.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z', '-----': '0', '.----': '1', '..---': '2', '...--': '3', '....-': '4', '.....': '5', '-....': '6', '--...': '7', '---..': '8', '----.': '9', '.-.-.-': '.', '--..--': ',', '..--..': '?', '.----.': "'", '-.-.--': '!', '-..-.': '/', '-.--.': '(', '-.--.-': ')', '.-...': '&', '---...': ':', '-.-.-.': ';', '-...-': '=', '.-.-.': '+', '-....-': '-', '..--.-': '_', '.-..-.': '"', '...-..-': '$', '.--.-.': '@', '...---...': 'SOS'}
 
-def killian_day10(morse_code):
-    while morse_code[0] == ' ':
-        morse_code = morse_code[1:]
-    while morse_code[len(morse_code)-1] == ' ':
-        morse_code = morse_code[:-1]
-    words = morse_code.split('   ')
-    readable = ""
-    for word in words:
-        letters = word.split(' ')
-        for letter in letters:
-            readable += MORSE_CODE[letter]
-        readable += ' '
-    return readable[: -1]
-
-TEST_CODE_killian = '''
-result = killian_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
-'''
 
 akash_karan_setup = '''
 from __main__ import akash_karan_day10
@@ -33,7 +14,7 @@ from __main__ import akash_karan_day10_decode
 def akash_karan_day10_decode(bits):
     di={'1':'.','111':'-','0':'','000':' ','0000000':'   '}
     mini=min([len(list(value)) for key,value in groupby(bits.strip("0"))])
-    return "".join([di.get(seq,"") for seq in ([key*(len(list(value))/mini) for key,value in groupby(bits)])])
+    return "".join([di.get(seq,"") for seq in ([key*(len(list(value))//mini) for key,value in groupby(bits)])])
 def akash_karan_day10(morseCode):
     return ''.join([MORSE_CODE.get(i, ' ') for i in morseCode.strip().replace('  ', ' ').split(' ')])
 
@@ -78,7 +59,6 @@ def ccquiel_day10(morse_code):
         for c in chars:
             decoded += MORSE_CODE[c]
     return decoded
-
 
 TEST_CODE_ccquiel = '''
 result = ccquiel_day10(ccquiel_day10_decode('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
@@ -164,63 +144,103 @@ result = diana_henninger_day10(diana_henninger_decodeBits('110011001100110000001
 
 ggebre_setup = '''
 from __main__ import ggebre_day10
+from __main__ import ggebre_day10_decode
 '''
+
+def ggebre_day10_decode(bits):
+    # ToDo: Accept 0's and 1's, return dots, dashes and spaces
+    return bits.strip('0').replace('00000000000000', '   ').replace('000000', ' ').replace('111111', '-').replace('11', '.').replace('00', '')
 
 def ggebre_day10(morse_code):
-    words = morse_code.strip().split("   ")
-    decoded_words = []
-    for word in words:
-        decoded_word = ""
-        letter = word.split()
-        for lett in letter:
-            decoded_word += MORSE_CODE[lett]
-        decoded_words.append(decoded_word)
-    return " ".join(decoded_words)
+    coded = [word.split(' ') for word in morse_code.split('   ')]
+    decoded_text = ""
+    for word in coded:
+        for letter in word:
+            decoded_text += MORSE_CODE[letter]
+        decoded_text += ' '
+    return decoded_text.strip()
 
 TEST_CODE_ggebre = '''
-result = ggebre_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
+result = ggebre_day10(ggebre_day10_decode('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
 '''
 
-vijaya_lakshmi_setup = '''
-from __main__ import vijaya_lakshmi_day10
+Jens_setup = '''
+from __main__ import Jens_day10
+from __main__ import Jens_decodeBits
 '''
 
-def vijaya_lakshmi_day10(morse_code):
-    #your code here
-    words = morse_code.split("  ")
-    sentence = ""
-    for everyWord in words:
-        letters = everyWord.split(" ")
-        word = ""
-        for everyLetter in letters:
-            word += MORSE_CODE.get(everyLetter, "")
-        sentence += word + " "
-    return sentence.strip()
+def Jens_decodeBits(bits):
+    bits = bits.strip('0')
+    z_count = [x for x in map(lambda y: len(y), bits.split('1')) if x != 0]
+    if z_count != [] and max(z_count) >= 7 and max(z_count)%7 == 0:
+        rate = max(map(lambda y: len(y), bits.split('1')))//7
+    else:
+        o_count = [x for x in map(lambda y: len(y), bits.split('0')) if x != 0]
+        print('0 = ', o_count)
+        if o_count == [] and z_count == []:
+            rate = 0
+        elif o_count == []:
+            rate = min(z_count)
+        elif z_count == []:
+            rate = min(o_count)
+        else:
+            rate = min(min(o_count), min(z_count))
+    if rate > 0:
+        bits = bits[::rate]
+    bits = bits.replace('0000000', '   ').replace('111', '-').replace('000', ' ').replace('1', '.').replace('0', '')
+    return bits
+def Jens_day10(morse_code):
+    morse_code = morse_code.rstrip().lstrip()
+    m = ''
+    for word in morse_code.split('   '):
+        for letter in word.split(' '):
+            m += MORSE_CODE[letter]
+        m += ' '
+    return m[:-1]
 
-TEST_CODE_vijaya_lakshmi = '''
-result = vijaya_lakshmi_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
+TEST_CODE_Jens = '''
+result = Jens_day10(Jens_decodeBits('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
 '''
 
-Prashanth_Kadimisetty_setup = '''
-from __main__ import Prashanth_Kadimisetty_day10
+Jose_Catela_setup = '''
+from __main__ import Jose_Catela_day10
+from __main__ import Jose_Catela_day10_decode
 '''
 
-def Prashanth_Kadimisetty_day10(morse_code):
-    return min([available[x]//recipe[x] if x in available else 0 for x in recipe])
+def Jose_Catela_day10_decode(bits):
+    bits = bits.strip('0')
+    time_unit = 0
+    pos1zero = 0
+    if '0' in bits:
+        while pos1zero < len(bits) and bits[pos1zero] != '0':
+            pos1zero += 1
+        zeros = 0
+        while zeros+pos1zero < len(bits) and bits[zeros+pos1zero] != '1':
+            zeros += 1
+        uns = 0
+        while zeros+pos1zero+uns < len(bits) and bits[zeros+pos1zero+uns] != '0':
+            uns += 1
+        if uns < zeros:
+            time_unit = uns
+        else:
+            time_unit = zeros
+    else:
+        time_unit = len(bits)
+    return bits.replace('1' * time_unit * 3, '-').replace('0' * time_unit * 7, '   ').replace('1'*time_unit, '.').replace('0'*time_unit*3, ' ').replace('0'*time_unit, '')
+def Jose_Catela_day10(morse_code):
+    result = ''
+    words_in = morse_code.split('   ')
+    words_out = []
+    for word_in in words_in:
+        word_in = word_in.split(' ')
+        word_out = ''
+        for letter in word_in:
+            word_out += MORSE_CODE[letter]
+        words_out.append(word_out)
+    return ' '.join(words_out)
 
-TEST_CODE_Prashanth_Kadimisetty = '''
-result = Prashanth_Kadimisetty_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
-'''
-
-David_Nugent_setup = '''
-from __main__ import David_Nugent_day10
-'''
-
-def David_Nugent_day10(morse_code):
-    return min(available.get(k, 0) // recipe[k] for k in recipe)
-
-TEST_CODE_David_Nugent = '''
-result = David_Nugent_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
+TEST_CODE_Jose_Catela = '''
+result = Jose_Catela_day10(Jose_Catela_day10_decode('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
 '''
 
 Kurt_Hinderer_setup = '''
@@ -280,86 +300,75 @@ TEST_CODE_Kurt_Hinderer = '''
 result = Kurt_Hinderer_day10(Kurt_Hinderer_day10_decode('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
 '''
 
-Jose_Catela_setup = '''
-from __main__ import Jose_Catela_day10
-from __main__ import Jose_Catela_day10_decode
+Memo_Hurtado_setup = '''
+from __main__ import Memo_Hurtado_day10
+from __main__ import Memo_Hurtado_decodeBits
 '''
 
-def Jose_Catela_day10_decode(bits):
-    bits = bits.strip('0')
-    time_unit = 0
-    pos1zero = 0
-    if '0' in bits:
-        while pos1zero < len(bits) and bits[pos1zero] != '0':
-            pos1zero += 1
-        zeros = 0
-        while zeros+pos1zero < len(bits) and bits[zeros+pos1zero] != '1':
-            zeros += 1
-        uns = 0
-        while zeros+pos1zero+uns < len(bits) and bits[zeros+pos1zero+uns] != '0':
-            uns += 1
-        if uns < zeros:
-            time_unit = uns
-        else:
-            time_unit = zeros
-    else:
-        time_unit = len(bits)
-    return bits.replace('1' * time_unit * 3, '-').replace('0' * time_unit * 7, '   ').replace('1'*time_unit, '.').replace('0'*time_unit*3, ' ').replace('0'*time_unit, '')
-def Jose_Catela_day10(morse_code):
-    result = ''
-    words_in = morse_code.split('   ')
-    words_out = []
-    for word_in in words_in:
-        word_in = word_in.split(' ')
-        word_out = ''
-        for letter in word_in:
-            word_out += MORSE_CODE[letter]
-        words_out.append(word_out)
-    return ' '.join(words_out)
+def Memo_Hurtado_decodeBits(bits):
+    firstDown = bits.find("1")
+    lastDown =''.join(reversed(bits)).find("1")
+    firstBackUp = bits.find("0", firstDown)
+    secondDown = bits.find("1", firstBackUp)
+    sizes = []
+    bits_list_one = list(bits.split("1"))
+    bits_list_zero = list(bits.split("0"))
+    bits_list = bits_list_one + bits_list_zero
+    for bit in bits_list:
+      if len(bit) > 0 and bit.find('1') != -1:
+        sizes.append(len(bit))
+    timeUnitA = min(sizes)
+    timeUnitB = (len(bits) - firstDown ,firstBackUp - firstDown ) [firstBackUp  > 0]
+    timeUnitC = (timeUnitB, secondDown - firstBackUp) [secondDown > 0]
+    timeUnit =  min(timeUnitA, timeUnitB, timeUnitC)
+    downSignal = "1" * timeUnit
+    upSignal = "0" * timeUnit
+    dotSignal = downSignal 
+    dashSignal = downSignal * 3
+    newBitSignal = upSignal
+    newCharSignal = upSignal * 3
+    newWordSignal = upSignal * 7
+    cleanSignal = ( bits[firstDown:], bits[firstDown:-lastDown]) [lastDown != 0]
+    translated_word_list = []
+    word_list = list(cleanSignal.split(newWordSignal))
+    for word in word_list:
+      char_list = list(word.split(newCharSignal))
+      translated_char_list = []
+      for char in char_list:
+        char_bit_list = list(char.split(newBitSignal))
+        translated_char_bit_list = []
+        for char_bit in char_bit_list:
+          translated_char_bit = char_bit.replace(dashSignal, '-').replace(dotSignal, '.')
+          translated_char_bit_list.append(translated_char_bit)
+        translated_char = ''.join(translated_char_bit_list)
+        translated_char_list.append(translated_char)
+        translated_char_list.append(' ')
+      translated_char_list.pop()
+      translated_word = ''.join(translated_char_list)
+      translated_word_list.append(translated_word)
+      translated_word_list.append('   ') 
+    translated_message = ''.join(translated_word_list)
+    return translated_message 
+def Memo_Hurtado_day10(morse_code):
+    words_list = list(morse_code.split('   ')) 
+    readable_list = []
+    for word in words_list:
+        letter_list = list(word.split(' '))
+        for letter in letter_list:
+            if letter != '':
+                readable_list.append(MORSE_CODE[letter])
+        readable_list.append(' ')
+    return ''.join( readable_list).strip()
 
-TEST_CODE_Jose_Catela = '''
-result = Jose_Catela_day10(Jose_Catela_day10_decode('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
-'''
-
-Yang_setup = '''
-from __main__ import Yang_day10
-'''
-
-
-def Yang_day10(morse_code):
-    dict = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-    val = dict[roman[0]]
-    if len(morse_code) == 1: return val
-    for i, x in enumerate(roman[1:], 1):
-        val += dict[x]
-        if dict[roman[i - 1]] < dict[roman[i]]:
-            val -= dict[roman[i - 1]] * 2
-    return val
-
-TEST_CODE_Yang = '''
-result = Yang_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
-'''
-
-Vanessa_G_setup = '''
-from __main__ import Vanessa_G_day10
-'''
-
-
-def Vanessa_G_day10(morse_code):
-    MORSE_CODE[''] = ' '
-    result = ""
-    for c in morse_code.split('   '):
-        result += ''.join(MORSE_CODE[a] for a in c.split(' ')) + ' '
-    return result.strip()
-
-TEST_CODE_Vanessa_G = '''
-result = Vanessa_G_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
+TEST_CODE_Memo_Hurtado = '''
+result = Memo_Hurtado_day10(Memo_Hurtado_decodeBits('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
 '''
 
 Oleksandra_Chmel_setup = '''
 from __main__ import Oleksandra_Chmel_day10
 from __main__ import Oleksandra_Chmel_decodeBits
 '''
+
 def Oleksandra_Chmel_decodeBits(bits):
     # ToDo: Accept 0's and 1's, return dots, dashes and spaces
     bits = bits.strip('0')
@@ -379,47 +388,16 @@ def Oleksandra_Chmel_day10(morseCode):
             message += letter.replace('space',' ')
     return message.strip()
 
-
-
 TEST_CODE_Oleksandra_Chmel = '''
 result = Oleksandra_Chmel_day10(Oleksandra_Chmel_decodeBits('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011'))
 '''
 
-sjay_setup = '''
-from __main__ import sjay_day10
-'''
-
-
-def sjay_day10(morse_code):
-    morse_code.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '')
-    initcode=morse_code.strip().split(" ")
-    for ind,cd in enumerate(initcode):
-        if(MORSE_CODE.get(cd)==None):
-            initcode[ind]= " "
-        else:
-            initcode[ind]=MORSE_CODE.get(cd)
-    for ind,cd in enumerate(initcode):
-        if(cd == " " and initcode[ind-1] == " "):
-            del initcode[ind]
-    return "".join(initcode)
-
-
-TEST_CODE_sjay = '''
-result = sjay_day10('1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011')
-'''
-
-#print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=10000)) + " seconds")
-#print("Time for killian test code: " + str(timeit.timeit(stmt=TEST_CODE_killian, setup=killian_setup, number=10000)) + " seconds")
+print("Time for akash_karan test code: " + str(timeit.timeit(stmt=TEST_CODE_akash_karan, setup=akash_karan_setup, number=10000)) + " seconds")
 print("Time for ccquiel test code: " + str(timeit.timeit(stmt=TEST_CODE_ccquiel, setup=ccquiel_setup, number=10000)) + " seconds")
-#print("Time for vijaya_lakshmi test code: " + str(timeit.timeit(stmt=TEST_CODE_vijaya_lakshmi, setup=vijaya_lakshmi_setup, number=10000)) + " seconds")
 print("Time for diana_henninger test code: " + str(timeit.timeit(stmt=TEST_CODE_diana_henninger, setup=diana_henninger_setup, number=10000)) + " seconds")
-#print("Time for ggebre test code: " + str(timeit.timeit(stmt=TEST_CODE_ggebre, setup=ggebre_setup, number=10000)) + " seconds")
-#print("Time for David_Nugent test code: " + str(timeit.timeit(stmt=TEST_CODE_David_Nugent, setup=David_Nugent_setup, number=10000)) + " seconds")
-#print("Time for Prashanth_Kadimisetty test code: " + str(timeit.timeit(stmt=TEST_CODE_Prashanth_Kadimisetty, setup=Prashanth_Kadimisetty_setup, number=10000)) + " seconds")
-print("Time for Kurt_Hinderer test code: " + str(timeit.timeit(stmt=TEST_CODE_Kurt_Hinderer, setup=Kurt_Hinderer_setup, number=10000)) + " seconds")
+print("Time for ggebre test code: " + str(timeit.timeit(stmt=TEST_CODE_ggebre, setup=ggebre_setup, number=10000)) + " seconds")
+print("Time for Jens test code: " + str(timeit.timeit(stmt=TEST_CODE_Jens, setup=Jens_setup, number=10000)) + " seconds")
 print("Time for Jose_Catela test code: " + str(timeit.timeit(stmt=TEST_CODE_Jose_Catela, setup=Jose_Catela_setup, number=10000)) + " seconds")
-#print("Time for Yang test code: " + str(timeit.timeit(stmt=TEST_CODE_Yang, setup=Yang_setup, number=10000)) + " seconds")
-#print("Time for Vanessa_G test code: " + str(timeit.timeit(stmt=TEST_CODE_Vanessa_G, setup=Vanessa_G_setup, number=10000)) + " seconds")
-#print("Time for Memo_Hurtado test code: " + str(timeit.timeit(stmt=TEST_CODE_Memo_Hurtado, setup=Memo_Hurtado_setup, number=10000)) + " seconds")
+print("Time for Kurt_Hinderer test code: " + str(timeit.timeit(stmt=TEST_CODE_Kurt_Hinderer, setup=Kurt_Hinderer_setup, number=10000)) + " seconds")
+print("Time for Memo_Hurtado test code: " + str(timeit.timeit(stmt=TEST_CODE_Memo_Hurtado, setup=Memo_Hurtado_setup, number=10000)) + " seconds")
 print("Time for Oleksandra_Chmel test code: " + str(timeit.timeit(stmt=TEST_CODE_Oleksandra_Chmel, setup=Oleksandra_Chmel_setup, number=10000)) + " seconds")
-#print("Time for sjay test code: " + str(timeit.timeit(stmt=TEST_CODE_sjay, setup=sjay_setup, number=10000)) + " seconds")
